@@ -218,7 +218,9 @@ struct cmd_exit
 
 struct cmd_echo
 {
-    static constexpr auto rule  = LEXY_KEYWORD("echo", identifier) >> arg_sep + dsl::p<argument>;
+    static constexpr auto rule  = LEXY_KEYWORD("echo", identifier) >> LEXY_LIT("abc") + dsl::p<argument>;
+    // static constexpr auto rule  = LEXY_KEYWORD("echo", identifier) >> dsl::lit_c<'a'> + dsl::p<argument>;
+    // static constexpr auto rule  = LEXY_KEYWORD("echo", identifier) >> dsl::round_bracketed( dsl::p<argument>);
     static constexpr auto value = lexy::new_<shell::cmd_echo, shell::command>;
 };
 
