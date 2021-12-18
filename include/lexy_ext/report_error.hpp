@@ -181,7 +181,7 @@ OutputIt write_error(OutputIt out, const lexy::error_context<Production, Input>&
         auto string = lexy::_detail::make_literal_lexeme<typename Reader::encoding>(error.string());
 
         out = writer.write_annotation(out, annotation_kind::primary, location,
-                                      lexy::_detail::next(error.position(), error.index() + 1),
+                                      lexy::_detail::next(error.position(), error.index()),
                                       [&](OutputIt out, lexy::visualization_options opts) {
                                           out = lexy::_detail::write_str(out, "expected '");
                                           out = lexy::visualize_to(out, string, opts);
